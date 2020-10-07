@@ -1,5 +1,4 @@
 from app import db
-from datetime import datetime
 
 book_author = db.Table('join',
     db.Column('author_id', db.Integer, db.ForeignKey('author.id')),
@@ -10,7 +9,7 @@ book_author = db.Table('join',
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), index=True)
-    year = db.Column(db.Numeric(4,0))
+    year = db.Column(db.Numeric(4, 0))
     author = db.relationship('Author', secondary=book_author, backref=db.backref('books', lazy='dynamic'))
     borrowed = db.relationship('Borrowing', backref='book')
 
