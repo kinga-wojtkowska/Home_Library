@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import Book, Author, Borrowing
+from app.models import Author, Borrowing, Book
 
 
 @app.shell_context_processor
