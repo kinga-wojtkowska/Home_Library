@@ -3,15 +3,19 @@ from wtforms import StringField, IntegerField, SelectField
 from wtforms.validators import DataRequired
 from app.models import Book, Author
 
-authors = Author.query.all()
-books_all = Book.query.all()
-books = [x.title for x in books_all]
-
 
 class BooksLibForm(FlaskForm):
     title = StringField('Tytuł', validators=[DataRequired()])
     year = IntegerField('Rok wydania')
-    author = SelectField('Wybierz autora', choices=authors)
+    author = SelectField('Wybierz autora')
+
+    @classmethod
+    def new(cls):
+        # Instantiate the form
+        form = cls()
+        # Update the choices for the author field
+        form.author.choices = [x.name for x in Author.query.all()]
+        return form
 
 
 class AuthorLibForm(FlaskForm):
@@ -19,9 +23,15 @@ class AuthorLibForm(FlaskForm):
 
 
 class BorrowingForm(FlaskForm):
-    title = SelectField('Wybierz tytuł książki', choices=books)
+    title = SelectField('Wybierz tytuł książki')
     date = StringField('Data wypożyczenia, YYYY-MM-DD', validators=[DataRequired()])
     where = StringField('Komu wypożyczono', validators=[DataRequired()])
+
+    @classmethod
+    def new(cls):
+        form = cls()
+        form.title.choices = [x.title for x in Book.query.all()]
+        return form
 
 
 class DeleteForm(FlaskForm):
