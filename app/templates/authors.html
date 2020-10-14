@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>Lista autorów</h2>
-<a href="/sql/books/">Do listy książek</a><br><br>
+<a href="/books/">Do listy książek</a><br><br>
 
 <table>
     <thead>
@@ -15,13 +15,13 @@
     </thead>
 {% for author in authors %}
     <tr>
-        <td><a href="/sql/authors/{{ author.id }}">{{ author.name }}</a></td>
+        <td><a href="/authors/{{ author.id }}">{{ author.name }}</a></td>
     </tr>
 {% endfor %}
 </table>
 <div>
     <h2> Dodaj nowego autora do biblioteki: </h2>
-    <form method="POST" action="/sql/authors/">
+    <form method="POST" action="/authors/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}

@@ -8,8 +8,8 @@
 
 <body>
 <h2>Lista książek w bibliotece</h2>
-<a href="/sql/authors/">Do listy autorów</a><br><br>
-<a href="/sql/borrowing/">Do listy wypożyczeń</a><br><br>
+<a href="/authors/">Do listy autorów</a><br><br>
+<a href="/borrowing/">Do listy wypożyczeń</a><br><br>
 
 <table>
     <thead>
@@ -19,7 +19,7 @@
     </thead>
 {% for book in books %}
     <tr>
-        <td><a href="/sql/books/{{ book.id }}">{{ book.title }}</a></td>
+        <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>
         <td>{{ book.author }}</td>
         <td>{{ book.year }}</td>
     </tr>
@@ -27,7 +27,7 @@
 </table>
 <div>
     <h2> Dodaj nowy tytuł do biblioteki: </h2>
-    <form method="POST" action="/sql/books/">
+    <form method="POST" action="/books/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}

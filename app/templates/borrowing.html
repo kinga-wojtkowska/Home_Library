@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <a href="/sql/authors/">Do listy autorów</a><br><br>
-    <a href="/sql/books/">Do listy książek</a><br><br>
+    <a href="/authors/">Do listy autorów</a><br><br>
+    <a href="/books/">Do listy książek</a><br><br>
     <table>
         <thead>
         <th>Id</th>
@@ -31,7 +31,7 @@
     <br>
     <!--<a href ="/sql/books/update/{{book_id}}"><input type="submit" value="Zmień dane książki"></a>-->
 
-    <form method="POST" action="/sql/borrowing/">
+    <form method="POST" action="/borrowing/">
         {{ form2.hidden_tag() }}
         <table>
             {% for field in form2 if field.widget.input_type != 'hidden' %}
@@ -46,7 +46,7 @@
     </form>
 
     <h2> Dodaj: </h2>
-    <form method="POST" action="/sql/borrowing/">
+    <form method="POST" action="/borrowing/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}
