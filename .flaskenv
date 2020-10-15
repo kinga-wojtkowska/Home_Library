@@ -1,1 +1,2 @@
 FLASK_APP=home_library.py
+FLASK_ENV=development
